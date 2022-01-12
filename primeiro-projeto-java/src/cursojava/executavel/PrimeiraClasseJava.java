@@ -46,7 +46,7 @@ public class PrimeiraClasseJava {
     	  
     	  
     	  
-    	  for (int pos=1 ; pos<=4; pos++) {
+    	  for (int pos=1 ; pos<=1; pos++) {
                 
                 Disciplina disciplina = new Disciplina();
                 //String nomeDisciplina = JOptionPane.showInputDialog("Entre com o nome da "+pos+"ª"+" disciplina");
@@ -63,29 +63,33 @@ public class PrimeiraClasseJava {
         if (escolha == 0 ){
         	
         	int continuarRemover =0;
-        //	int posicao =1;
+        	int posicao =1;
         
         	while (continuarRemover == 0) {
                         
                 String remove = JOptionPane.showInputDialog("qual nota quer remover (1-4)?");
-                aluno1.getDisciplinas().remove(Integer.valueOf( remove).intValue()-1); //Converte para inteiro a variável remove (String)
+                aluno1.getDisciplinas().remove(Integer.valueOf( remove).intValue()-posicao); //Converte para inteiro a variável remove (String)
                 JOptionPane.showMessageDialog(null, "Restam "+aluno1.getDisciplinas().size()+" notas");
-           //     posicao ++;                
+                posicao ++;                
               continuarRemover = JOptionPane.showConfirmDialog(null, "Deseja continuar removendo notas?");
-                                
         }
         }
         alunos.add(aluno1);
       }    
       
       for (Aluno aluno : alunos) {
-    	  
+    	  String procNome=JOptionPane.showInputDialog("Quem vc quer encontrar?");
+    	  if (aluno.getNome().equalsIgnoreCase(procNome)) {
+    	JOptionPane.showMessageDialog(null, "Aluno "+procNome+" está: "+ aluno.getAlunoAprovado());
     	  System.out.println("Nome : "+aluno.getNome());
           //System.out.println("Idade: "+aluno.getIdade());
-          System.out.println("Media do Aluno: "+aluno.getNome()+" é:"+ aluno.getMediaNota());
-          System.out.println("Resultado do Aluno: "+aluno.getNome()+" é:"+ aluno.getAlunoAprovado());
+          System.out.println("Media do Aluno: "+aluno.getNome()+" é: "+ aluno.getMediaNota());
+          System.out.println("Resultado do Aluno: "+aluno.getNome()+" é: "+ aluno.getAlunoAprovado());
           System.out.println("-----------------------------------------------");
-          //JOptionPane.showMessageDialog(null, "Aluno "+aluno.getNome()+" está: "+ aluno.getAlunoAprovado());		
+          //JOptionPane.showMessageDialog(null, "Aluno "+aluno.getNome()+" está: "+ aluno.getAlunoAprovado());	 
+          break;
+    	  }
+    	 	
 	}
                 //JOptionPane.showMessageDialog(null, "Saí do looping");
         
