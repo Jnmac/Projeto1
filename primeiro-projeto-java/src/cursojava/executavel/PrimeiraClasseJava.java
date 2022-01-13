@@ -77,27 +77,41 @@ public class PrimeiraClasseJava {
         alunos.add(aluno1);
       }    
       
-      for (Aluno aluno : alunos) {
-       	  
-    	  if (aluno.getNome().equalsIgnoreCase("Bianca")) { //se descomentar linha de cima, trocar "Bianca" por procNome
-    		  alunos.remove(aluno);
-    	  break;
-    	  } else {
-    		  System.out.println("Nome : "+aluno.getNome());
-              System.out.println("Media do Aluno: "+aluno.getNome()+" é: "+ aluno.getMediaNota());
-              System.out.println("Resultado do Aluno: "+aluno.getNome()+" é: "+ aluno.getAlunoAprovado());
-              System.out.println("-----------------------------------------------");
-    	  }
-	}
-            for (Aluno aluno : alunos) {
-				System.out.println("Alunos que sobraram na lista");
-				System.out.println(aluno.getNome());
-				System.out.println("Suas notas foram: ");
-				
-				for (Disciplina disciplina : aluno.getDisciplinas())
-								{
-									System.out.println(disciplina.getDisciplina());
-				}
-			}
+    for (int pos=0; pos < alunos.size(); pos++) { //Varrendo a lista por posições
+    	
+    	Aluno aluno = alunos.get(pos);
+    	
+    	if (aluno.getNome().equalsIgnoreCase("Bianca")) {
+    		Aluno trocar = new Aluno();
+    		trocar.setNome("Beatriz");
+    		
+    		Disciplina disciplina = new Disciplina();
+    		disciplina.setDisciplina("Matematica");
+    		disciplina.setNota(96.0);
+    		
+    		trocar.getDisciplinas().add(disciplina);
+    		
+    		alunos.set(pos, trocar);
+    		aluno = alunos.get(pos);
+    	}
+    	
+    	
+    	System.out.println("Aluno: "+aluno.getNome());
+    	System.out.println("Media do aluno = " + aluno.getMediaNota());
+    	System.out.println("Resultado = " + aluno.getAlunoAprovado());
+    	System.out.println("-----------------------------------------------------");
+    	
+    /*	for (Disciplina disc : aluno.getDisciplinas()) {
+    		System.out.println("Materia = "+disc.getDisciplina()+"Nota = "+disc.getNota() );
+			
+		}*/
+    	
+    	
+    	for (int posd=0; posd< aluno.getDisciplinas().size(); posd ++) {
+    		
+    		Disciplina disc = aluno.getDisciplinas().get(posd);
+    		System.out.println("Materia = "+disc.getDisciplina()+"Nota = "+disc.getNota() );
+    	}
+        }
 }
 }
